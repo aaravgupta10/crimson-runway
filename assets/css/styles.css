@@ -128,25 +128,22 @@ h3,
 
 /* --- HEADER --- */
 .site-header {
-    position: fixed;
+    position: absolute;
+    /* Changed from fixed to absolute */
     top: 0;
     left: 0;
     width: 100%;
     height: var(--header-height);
     z-index: 1000;
+
+    /* Always Transparent */
     background: transparent;
     border-bottom: 1px solid transparent;
-    transition: all 0.4s ease;
+
+    /* Removed the transition since it doesn't change state anymore */
 }
 
-/* Scrolled State */
-.site-header.scrolled {
-    background: rgba(5, 5, 5, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
+/* DELETED: .site-header.scrolled { ... } block */
 
 .header-content {
     display: flex;
