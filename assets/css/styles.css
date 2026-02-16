@@ -30,12 +30,19 @@
     scroll-behavior: smooth;
 }
 
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+    /* CRITICAL FIX: Locks the viewport width on mobile */
+    position: relative;
+}
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     font-family: var(--font-main);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 main {
@@ -100,18 +107,26 @@ h1 {
 /* PHASE 1 CORRECTION: 
    Solid Premium Red. No White. No Movement. 
 */
+/* REVISED GRADIENT: Mobile-Optimized Glow */
 .text-gradient,
 .hero-title span,
 .gradient-text {
-    /* Subtle gradient from Bright Crimson to Deep Red for depth, but appears solid */
+    /* Deep Crimson Gradient */
     background: linear-gradient(to bottom, #ef4444 0%, #b91c1c 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
 
-    /* Red Glow to make it pop against the black background */
+    /* PC Glow */
     filter: drop-shadow(0px 0px 20px rgba(220, 38, 38, 0.6));
+
+    /* MOBILE GLOW FIX: Stronger, specific webkit filter */
+    -webkit-filter: drop-shadow(0px 0px 15px rgba(220, 38, 38, 0.8));
+
+    /* Ensure the element has layout properties that allow filters to render */
+    display: inline-block;
+    transform: translateZ(0);
+    /* Hardware acceleration trick for mobile */
 }
 
 /* --- UTILITY & ANIMATION --- */
@@ -989,9 +1004,14 @@ h1 {
         margin-top: 0;
     }
 
+    /* Inside @media (max-width: 900px) */
     .marquee-container {
-        width: 120%;
-        margin-left: -10%;
+        width: 100vw;
+        /* Use viewport width instead of % to prevent overflow */
+        margin-left: -20px;
+        /* Offset the container padding */
+        transform: rotate(-1deg) scale(1.1);
+        /* Scale it up slightly to hide edges */
     }
 
     .work-grid {
