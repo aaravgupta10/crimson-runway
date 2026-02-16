@@ -69,5 +69,33 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });*/
+    /* -----------------------------------------------------------
+       4. MOUSE SEARCHLIGHT EFFECT
+       ----------------------------------------------------------- */
+    const spotlight = document.querySelector('.cursor-spotlight');
+
+    if (spotlight) {
+        let mouseX = 0;
+        let mouseY = 0;
+
+        // Track mouse movement
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Move the spotlight instantly (no lag for responsiveness)
+            spotlight.style.left = mouseX + 'px';
+            spotlight.style.top = mouseY + 'px';
+        });
+
+        // Hide spotlight when mouse leaves the window
+        document.addEventListener('mouseleave', () => {
+            spotlight.style.opacity = '0';
+        });
+
+        document.addEventListener('mouseenter', () => {
+            spotlight.style.opacity = '1';
+        });
+    }
 
 });
