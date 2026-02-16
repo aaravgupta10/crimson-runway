@@ -129,7 +129,7 @@ h3,
 /* --- HEADER --- */
 .site-header {
     position: absolute;
-    /* Changed from fixed to absolute */
+    /* <--- CRITICAL CHANGE: 'absolute' makes it stay at the top */
     top: 0;
     left: 0;
     width: 100%;
@@ -139,11 +139,10 @@ h3,
     /* Always Transparent */
     background: transparent;
     border-bottom: 1px solid transparent;
-
-    /* Removed the transition since it doesn't change state anymore */
 }
 
-/* DELETED: .site-header.scrolled { ... } block */
+/* IMPORTANT: I have DELETED the ".site-header.scrolled" rule here. 
+   Do not paste it back. This ensures the header never turns black. */
 
 .header-content {
     display: flex;
