@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* -----------------------------------------------------------
        3. DYNAMIC HEADER (Transparent -> Glass on Scroll)
-       ----------------------------------------------------------- */
+       ----------------------------------------------------------- 
     const header = document.querySelector('.site-header');
 
     window.addEventListener('scroll', () => {
@@ -68,6 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             header.classList.remove('scrolled');
         }
-    });
+    });*/
 
 });
