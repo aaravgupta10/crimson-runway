@@ -78,23 +78,21 @@ h3,
     color: var(--text-main);
 }
 
-/* REVISED GRADIENT: Static, High Contrast, Metallic */
+/* PHASE 1 CORRECTION: 
+   Solid Premium Red. No White. No Movement. 
+*/
 .text-gradient,
 .hero-title span,
 .gradient-text {
-    /* Hard angle (120deg) creates a sharp cut across the letters.
-       0-35% White (Bright Highlight)
-       50% Crimson (The Core Color)
-       100% Dark Blood (The Shadow)
-    */
-    background: linear-gradient(120deg, #FFFFFF 0%, #FFFFFF 35%, #DC2626 50%, #7F1D1D 100%);
+    /* Subtle gradient from Bright Crimson to Deep Red for depth, but appears solid */
+    background: linear-gradient(to bottom, #ef4444 0%, #b91c1c 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
 
-    /* Static glow to replace the animation */
-    filter: drop-shadow(0px 0px 20px rgba(220, 38, 38, 0.4));
+    /* Red Glow to make it pop against the black background */
+    filter: drop-shadow(0px 0px 20px rgba(220, 38, 38, 0.6));
 }
 
 /* --- UTILITY & ANIMATION --- */
@@ -296,7 +294,7 @@ h3,
     letter-spacing: 0.1em;
 }
 
-/* Pulsing Background Glow (Still animated, but subtle) */
+/* Pulsing Background Glow */
 .hero-glow {
     position: absolute;
     top: 50%;
