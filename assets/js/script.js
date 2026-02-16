@@ -97,5 +97,67 @@ document.addEventListener('DOMContentLoaded', () => {
             spotlight.style.opacity = '1';
         });
     }
+    /* -----------------------------------------------------------
+       5. CINEMATIC PRELOADER (The "0-100" Count)
+       ----------------------------------------------------------- */
+    const preloader = document.querySelector('.preloader');
+    const counter = document.querySelector('.counter');
+
+    if (preloader && counter) {
+        let count = 0;
+
+        // Disable scrolling while loading
+        document.body.style.overflow = 'hidden';
+
+        const updateCounter = () => {
+            // Logic to count up. Slower at the end for realism.
+            const increment = Math.floor(Math.random() * 10) + 1;
+            count += increment;
+
+            if (count > 100) count = 100;
+
+            counter.textContent = count;
+
+            if (count < 100) {
+                // Random speed to simulate "calculating"
+                setTimeout(updateCounter, Math.random() * 50 + 20);
+            } else {
+                // Animation Complete
+                setTimeout(() => {
+                    preloader.classList.add('hide'); // Slide up
+                    document.body.style.overflow = 'auto'; // Re-enable scroll
+
+                    // Optional: Trigger your hero animations here if you want them strictly after load
+                }, 500); // Wait half a second at 100%
+            }
+        };
+
+        updateCounter();
+    }
+
+    /* -----------------------------------------------------------
+       6. MAGNETIC BUTTONS (High-End Feel)
+       ----------------------------------------------------------- */
+    const buttons = document.querySelectorAll('.btn');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Mouse X relative to button
+            const y = e.clientY - rect.top;  // Mouse Y relative to button
+
+            // Calculate how far to move (the "pull" strength)
+            // 0.2 means the button moves 20% of the distance to your mouse
+            const xMove = (x - rect.width / 2) * 0.2;
+            const yMove = (y - rect.height / 2) * 0.2;
+
+            btn.style.transform = `translate(${xMove}px, ${yMove}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            // Snap back to center when mouse leaves
+            btn.style.transform = 'translate(0px, 0px)';
+        });
+    });
 
 });
