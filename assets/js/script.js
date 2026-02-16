@@ -159,5 +159,20 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.transform = 'translate(0px, 0px)';
         });
     });
+    /* -----------------------------------------------------------
+   7. LENIS SMOOTH SCROLL (The "Heavy" Feel)
+   ----------------------------------------------------------- */
+    const lenis = new Lenis({
+        duration: 1.2, // The "heaviness" of the scroll
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing function
+        smooth: true
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
 
 });
