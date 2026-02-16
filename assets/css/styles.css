@@ -7,7 +7,7 @@
     --text-muted: #a1a1aa;
     /* Sophisticated Grey */
 
-    /* Accents */
+    /* Accents - Updated for the "Magma" feel */
     --accent-glow: #dc2626;
     /* Crimson Red */
     --accent-subtle: rgba(220, 38, 38, 0.1);
@@ -38,6 +38,12 @@ body {
     overflow-x: hidden;
 }
 
+main {
+    position: relative;
+    z-index: 20;
+    /* Ensures content sits above noise overlay */
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -56,7 +62,8 @@ ul {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 9000;
+    z-index: 10;
+    /* Lowered z-index to prevent interaction issues */
     opacity: 0.05;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
@@ -72,16 +79,25 @@ h3,
     color: var(--text-main);
 }
 
-/* Liquid Metal Gradient */
+/* PHASE 1 UPGRADE: Liquid Magma Gradient */
 .text-gradient,
 .hero-title span,
 .gradient-text {
-    background: linear-gradient(to bottom right, #ffffff 30%, #9ca3af);
+    /* Deep rich gradient: White -> Soft Red -> Crimson -> Dark Blood */
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFC1C1 30%, #DC2626 60%, #991B1B 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
-    filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.1));
+    filter: drop-shadow(0px 0px 20px rgba(220, 38, 38, 0.2));
+    animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
 }
 
 /* --- UTILITY & ANIMATION --- */
@@ -116,7 +132,6 @@ h3,
 }
 
 /* --- HEADER --- */
-/* --- HEADER (Dynamic) --- */
 .site-header {
     position: fixed;
     top: 0;
@@ -124,24 +139,18 @@ h3,
     width: 100%;
     height: var(--header-height);
     z-index: 1000;
-
-    /* Default State: Transparent & No Border */
     background: transparent;
     border-bottom: 1px solid transparent;
-
     transition: all 0.4s ease;
-    /* Smooth transition when scrolling */
 }
 
-/* Scrolled State (Added via JS) */
+/* Scrolled State */
 .site-header.scrolled {
     background: rgba(5, 5, 5, 0.85);
-    /* Dark Glass */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    /* Adds depth when floating */
 }
 
 .header-content {
@@ -179,6 +188,7 @@ h3,
     font-size: 0.9rem;
     cursor: pointer;
     display: inline-block;
+    transition: all 0.3s ease;
 }
 
 .btn-primary {
@@ -190,6 +200,7 @@ h3,
 .btn-primary:hover {
     background-color: transparent;
     color: var(--text-main);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 .btn-secondary {
@@ -208,7 +219,7 @@ h3,
     color: var(--text-main);
 }
 
-/* --- HERO SECTION (With Image) --- */
+/* --- HERO SECTION --- */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -219,24 +230,14 @@ h3,
     text-align: center;
     overflow: hidden;
     padding-top: var(--header-height);
-
-    /* THE BACKGROUND IMAGE */
-    /* Layer 1: Dark gradient overlay (for readability) */
-    /* Layer 2: The actual image */
     background:
-        /* Layer 1: A gradient that fades from black (bottom) to transparent (top) */
         linear-gradient(to top, #050505 10%, rgba(5, 5, 5, 0.4) 100%),
-        /* Layer 2: A dark overlay to ensure text pops */
         rgba(5, 5, 5, 0.6),
-        /* Layer 3: The Image */
         url('../images/hero-bg.png');
-
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    /* Parallax effect */
     background-blend-mode: multiply;
-    /* Blends the layers for that "moody" look */
 }
 
 .hero-container {
@@ -257,6 +258,7 @@ h3,
     font-size: 0.85rem;
     color: var(--text-muted);
     margin-bottom: 24px;
+    backdrop-filter: blur(5px);
 }
 
 .badge-dot {
@@ -297,6 +299,7 @@ h3,
     letter-spacing: 0.1em;
 }
 
+/* PHASE 1 UPGRADE: Pulsing Cinematic Glow */
 .hero-glow {
     position: absolute;
     top: 50%;
@@ -304,9 +307,24 @@ h3,
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.4) 0%, rgba(5, 5, 5, 0) 70%);
     z-index: 1;
     pointer-events: none;
+    filter: blur(60px);
+    opacity: 0.6;
+    animation: pulse-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.7;
+    }
 }
 
 /* --- TRUST LOGOS --- */
@@ -366,20 +384,26 @@ h3,
     gap: 24px;
 }
 
+/* PHASE 1 UPGRADE: Glassmorphism & Borders */
 .bento-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     padding: 40px;
     transition: all 0.4s ease;
     position: relative;
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
 }
 
-/* YouTube Glow Hover */
+/* PHASE 1 UPGRADE: Hover Glow */
 .bento-card:hover {
     transform: translateY(-5px);
-    border-color: var(--accent-glow);
-    box-shadow: 0 0 0 1px var(--accent-glow), 0 0 40px rgba(220, 38, 38, 0.25);
+    border-color: rgba(220, 38, 38, 0.5);
+    /* Crimson border */
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.15);
+    /* Ambient glow */
     z-index: 10;
 }
 
@@ -538,35 +562,16 @@ h3,
     }
 }
 
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 900px) {
-    .bento-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .process-step {
-        gap: 20px;
-    }
-}
-
 /* --- KINETIC MARQUEE --- */
 .marquee-container {
     background: var(--text-main);
-    /* White strip */
     color: var(--bg-dark);
-    /* Black text */
     padding: 20px 0;
     overflow: hidden;
     position: relative;
     z-index: 5;
     transform: rotate(-1deg);
-    /* Slight tilt for "edgy" look */
     width: 105%;
-    /* Make it wider to cover the tilt edges */
     margin-left: -2.5%;
     margin-bottom: 80px;
 }
@@ -613,22 +618,19 @@ h3,
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    group: hover;
-    /* Setup for hover states */
 }
 
-/* Make the first card span full width */
+/* Card Sizes */
 .large-card {
     grid-column: span 2;
     height: 500px;
 }
 
-/* Standard height for other cards */
 .work-card:not(.large-card) {
     height: 400px;
 }
 
-/* Placeholder Gradients (Replace with images later) */
+/* Placeholder Gradients */
 .work-image-placeholder {
     width: 100%;
     height: 100%;
@@ -647,12 +649,11 @@ h3,
     background: linear-gradient(45deg, #111111, #222222);
 }
 
-/* The "Zoom" Effect on Hover */
+/* Hover Effects */
 .work-card:hover .work-image-placeholder {
     transform: scale(1.05);
 }
 
-/* Text Overlay */
 .work-info {
     position: absolute;
     bottom: 0;
@@ -688,19 +689,6 @@ h3,
     color: var(--text-muted);
     font-size: 0.9rem;
     max-width: 500px;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .work-grid {
-        grid-template-columns: 1fr;
-        /* Stack everything */
-    }
-
-    .large-card {
-        grid-column: span 1;
-        height: 400px;
-    }
 }
 
 /* --- CONTACT SECTION --- */
@@ -743,14 +731,20 @@ h3,
     color: var(--text-main);
 }
 
-/* --- FORM STYLING --- */
+/* PHASE 1 UPGRADE: Contact Form Glassmorphism */
 .contact-form-wrapper {
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 40px;
     border-radius: 20px;
-    /* Glass effect */
-    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.contact-form-wrapper:hover {
+    border-color: rgba(220, 38, 38, 0.3);
 }
 
 .form-group {
@@ -764,7 +758,6 @@ h3,
     margin-bottom: 10px;
 }
 
-/* The High-End Input Style */
 .contact-form-wrapper input,
 .contact-form-wrapper select,
 .contact-form-wrapper textarea {
@@ -778,17 +771,14 @@ h3,
     font-size: 1rem;
     transition: 0.3s ease;
     outline: none;
-    /* Removes default blue glow */
 }
 
-/* Focus State: Input lights up */
 .contact-form-wrapper input:focus,
 .contact-form-wrapper select:focus,
 .contact-form-wrapper textarea:focus {
     border-bottom-color: var(--text-main);
 }
 
-/* Style the dropdown options (browser default is usually ugly, this helps) */
 .contact-form-wrapper select option {
     background: #111;
     color: white;
@@ -798,7 +788,6 @@ h3,
     width: 100%;
     margin-top: 10px;
     padding: 15px;
-    /* Bigger button for form */
 }
 
 .form-note {
@@ -862,25 +851,7 @@ h3,
     font-size: 0.8rem;
 }
 
-/* Mobile Responsive */
-@media (max-width: 900px) {
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-content {
-        flex-direction: column;
-    }
-
-    .footer-links {
-        flex-wrap: wrap;
-        gap: 40px;
-    }
-}
-
 /* --- MOBILE NAVIGATION SYSTEM --- */
-
-/* Default State: Hide Mobile Elements on Desktop */
 .mobile-menu-btn {
     display: none;
 }
@@ -888,23 +859,19 @@ h3,
 .mobile-nav-overlay {
     position: fixed;
     top: var(--header-height);
-    /* Starts below the header bar */
     left: 0;
     width: 100%;
     height: calc(100vh - var(--header-height));
     background: rgba(5, 5, 5, 0.95);
-    /* Deep black opacity */
     backdrop-filter: blur(20px);
     z-index: 999;
     transform: translateX(100%);
-    /* Hidden to the right */
     transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Active State: Slide in */
 .mobile-nav-overlay.active {
     transform: translateX(0);
 }
@@ -919,7 +886,6 @@ h3,
 .mobile-link {
     font-family: var(--font-display);
     font-size: 2rem;
-    /* Big, tappable text */
     font-weight: 700;
     color: var(--text-muted);
     transition: 0.3s;
@@ -929,19 +895,27 @@ h3,
 .mobile-link:active {
     color: var(--text-main);
     letter-spacing: 2px;
-    /* Cool expansion effect */
 }
 
 /* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 900px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
 
-    /* 1. Hide Desktop Nav */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .process-step {
+        gap: 20px;
+    }
+
     .desktop-nav,
     .desktop-cta {
         display: none;
     }
 
-    /* 2. Show Mobile Button */
     .mobile-menu-btn {
         display: flex;
         flex-direction: column;
@@ -962,21 +936,12 @@ h3,
         transition: 0.3s ease;
     }
 
-    /* 3. Hamburger Animation to "X" */
     .mobile-menu-btn.active .bar:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
     }
 
     .mobile-menu-btn.active .bar:nth-child(2) {
         transform: translateY(-9px) rotate(-45deg);
-    }
-
-    /* Note: We only used 2 bars for a clean modern look, 
-       if you want 3, we'd fade the middle one out. */
-
-    /* 4. Typography Adjustments for Mobile */
-    .hero-title {
-        font-size: 2.5rem;
     }
 
     .hero-subtitle {
@@ -988,7 +953,6 @@ h3,
         font-size: 2rem;
     }
 
-    /* 5. Layout Adjustments */
     .contact-container {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -1018,9 +982,17 @@ h3,
         margin-top: 0;
     }
 
-    /* 6. Fix Marquee width on mobile */
     .marquee-container {
         width: 120%;
         margin-left: -10%;
+    }
+
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .large-card {
+        grid-column: span 1;
+        height: 400px;
     }
 }
