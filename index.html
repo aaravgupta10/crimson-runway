@@ -293,21 +293,27 @@
                 </div>
 
                 <div class="contact-form-wrapper reveal reveal-delay-1">
-                    <form class="partners-form">
+                    <form action="https://api.web3forms.com/submit" method="POST" class="partners-form">
+
+                        <input type="hidden" name="access_key" value="b5f62564-62a3-4308-8e87-78bc983ea34a">
+
+                        <input type="hidden" name="subject" value="New High-Ticket Lead: Crimson Runway">
+                        <input type="hidden" name="from_name" value="Crimson Website">
+                        <input type="hidden" name="redirect" value="https://crimsonrunway.com">
 
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" placeholder="John Doe" required>
+                            <input type="text" name="name" id="name" placeholder="John Doe" required>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Work Email</label>
-                            <input type="email" id="email" placeholder="john@company.com" required>
+                            <input type="email" name="email" id="email" placeholder="john@company.com" required>
                         </div>
 
                         <div class="form-group">
                             <label for="company">Company Size</label>
-                            <select id="company">
+                            <select name="company_size" id="company" required>
                                 <option value="" disabled selected>Select an option</option>
                                 <option value="50-100">50 - 100 Employees</option>
                                 <option value="100-500">100 - 500 Employees</option>
@@ -317,8 +323,11 @@
 
                         <div class="form-group">
                             <label for="message">Project Details</label>
-                            <textarea id="message" rows="4" placeholder="Tell us what you need..."></textarea>
+                            <textarea name="message" id="message" rows="4" placeholder="Tell us what you need..."
+                                required></textarea>
                         </div>
+
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                         <button type="submit" class="btn btn-primary btn-block">Request Consultation</button>
 
