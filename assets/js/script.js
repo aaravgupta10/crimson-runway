@@ -174,5 +174,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     requestAnimationFrame(raf);
+    /* -----------------------------------------------------------
+       8. AJAX FORM SUBMISSION (No Reload)
+       ----------------------------------------------------------- */
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('form-success');
+    const submitBtn = document.getElementById('form-submit-btn');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // STOP the page reload
+
+            // Show "Sending..." state
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = "Sending Request...";
+            submitBtn.style.opacity = "0.7";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(contactForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+                .then(async (response) => {
+                    if (response.status == 200) {
+                        // SUCCESS: Hide form, show success message
+                        contactForm.style.display = 'none';
+                        successMessage.style.display = 'block';
+
+                        // Optional: Smoothly fade it in
+                        successMessage.style.opacity = 0;
+                        setTimeout(() => {
+                            successMessage.style.transition = 'opacity 0.5s ease';
+                            successMessage.style.opacity = 1;
+                        }, 10);
+                    } else {
+                        console.log(response);
+                        submitBtn.textContent = "Error. Please try again.";
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    submitBtn.textContent = "Something went wrong.";
+                })
+                .then(function () {
+                    // Reset button state (just in case)
+                    submitBtn.disabled = false;
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.opacity = "1";
+                    }, 3000);
+                });
+        });
+    }
 
 });

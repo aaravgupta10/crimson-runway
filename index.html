@@ -293,14 +293,12 @@
                 </div>
 
                 <div class="contact-form-wrapper reveal reveal-delay-1">
-                    <form action="https://api.web3forms.com/submit" method="POST" class="partners-form">
 
-                        <input type="hidden" name="access_key" value="b5f62564-62a3-4308-8e87-78bc983ea34a">
+                    <form class="partners-form" id="contact-form">
 
-                        <input type="hidden" name="subject" value="New High-Ticket Lead: Crimson Runway">
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="hidden" name="subject" value="New Lead: Crimson Runway">
                         <input type="hidden" name="from_name" value="Crimson Website">
-                        <input type="hidden" name="redirect" value="https://crimsonrunway.com">
-
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" name="name" id="name" placeholder="John Doe" required>
@@ -315,6 +313,7 @@
                             <label for="company">Company Size</label>
                             <select name="company_size" id="company" required>
                                 <option value="" disabled selected>Select an option</option>
+                                <option value="Under 50">Under 50 Employees</option>
                                 <option value="50-100">50 - 100 Employees</option>
                                 <option value="100-500">100 - 500 Employees</option>
                                 <option value="500+">500+ Employees</option>
@@ -329,10 +328,24 @@
 
                         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-                        <button type="submit" class="btn btn-primary btn-block">Request Consultation</button>
-
+                        <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">Request
+                            Consultation</button>
                         <p class="form-note">Private & Confidential. No spam.</p>
                     </form>
+
+                    <div id="form-success" style="display: none; text-align: center; padding: 40px 0;">
+                        <div class="card-icon icon-good" style="margin-bottom: 20px;">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--text-main);">Request Received
+                        </h3>
+                        <p style="color: var(--text-muted);">Our procurement team will review your requirements and
+                            respond within 24 hours.</p>
+                    </div>
+
                 </div>
 
             </div>
