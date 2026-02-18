@@ -1146,3 +1146,23 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
     pointer-events: none;
 }
+
+/* Update the Logo Container */
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Control the Image Size */
+.nav-logo-img {
+    height: 40px;
+    /* Adjust this to fit your navbar height */
+    width: auto;
+    /* Maintains aspect ratio */
+    object-fit: contain;
+
+    /* OPTIONAL: If your logo is a JPG with a black background, 
+       this removes the black box (only works on dark backgrounds) */
+    mix-blend-mode: screen;
+}
