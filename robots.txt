@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://crimsonrunway.com/sitemap.xml
