@@ -251,6 +251,7 @@ h1 {
 }
 
 /* --- HERO SECTION --- */
+/* --- HERO SECTION --- */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -261,14 +262,25 @@ h1 {
     text-align: center;
     overflow: hidden;
     padding-top: var(--header-height);
-    background:
+
+    /* VALIDATED BACKGROUND SYNTAX */
+    background-color: #050505;
+    background-image:
         linear-gradient(to top, #050505 10%, rgba(5, 5, 5, 0.4) 100%),
-        rgba(5, 5, 5, 0.6),
+        linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.6)),
+        /* Fixed flat rgba layer */
         url('../images/hero-bg.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-blend-mode: multiply;
+}
+
+/* CRITICAL UX FIX: Forces Hero text to load instantly, ignoring the scroll reveal */
+.hero-section .reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: none !important;
 }
 
 .hero-container {
