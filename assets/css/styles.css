@@ -819,128 +819,123 @@ h1 {
     margin-top: 20px;
 }
 
-/* --- FOOTER --- */
 /* =========================================
-   FOOTER STYLES
+   FOOTER STYLES (3-Column Layout)
    ========================================= */
 .site-footer {
     background-color: #050505;
-    /* Deep black to anchor the page */
     border-top: 1px solid rgba(220, 20, 60, 0.15);
-    /* Subtle Crimson line */
-    padding: 60px 0 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 60px 0;
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 5%;
+    /* Vertically centers the 3 columns */
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px;
 }
 
-/* Logo Sizing (Using the negative margin trick from the header) */
-.footer-logo {
-    height: 140px;
-    width: auto;
-    display: block;
-    margin-top: -50px;
-    margin-bottom: -50px;
-}
-
-/* Social Icons */
-.footer-socials {
-    display: flex;
-    gap: 24px;
-}
-
-.social-icon svg {
-    height: 28px;
-    width: 28px;
-    fill: #ffffff;
-    opacity: 0.7;
-    transition: all 0.3s ease;
-}
-
-.social-icon:hover svg {
-    opacity: 1;
-    fill: #DC143C;
-    /* Turns your Crimson Red on hover */
-    transform: translateY(-3px);
-    /* Slight lift effect */
-}
-
-/* Bottom Copyright Text */
-.footer-bottom {
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    width: 100%;
-    text-align: center;
-}
-
-.footer-bottom p {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 0.85rem;
-    font-weight: 300;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-    }
-}
-
-/* Update these blocks in your footer CSS */
-.footer-brand {
+/* --- LEFT COLUMN: Brand & Details --- */
+.footer-left {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    max-width: 350px;
 }
 
 .footer-logo {
-    height: 140px;
+    height: 100px;
+    /* Kept reasonable to prevent spacing issues */
     width: auto;
     display: block;
-    margin-top: -50px;
-    margin-bottom: -50px;
-    /* Counteracts the empty space in the image */
+    margin: -30px 0 -25px -10px;
+    /* Pulls top/bottom tight, nudges left slightly */
 }
 
-/* New rule for the tagline */
 .footer-tagline {
-    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 1px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
     text-transform: uppercase;
-    opacity: 0.6;
-    margin-top: -15px;
-    /* Pulls text up under the logo tight */
-    margin-left: 5px;
-    /* Aligns it nicely with the 'C' in Crimson */
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
 }
 
-/* Mobile Fixes */
-@media (max-width: 768px) {
-    .footer-brand {
-        align-items: center;
-        /* Centers everything on mobile */
+.footer-details {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+/* --- MIDDLE COLUMN: Navigation --- */
+.footer-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-nav a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: #DC143C;
+}
+
+/* --- RIGHT COLUMN: Social Icons --- */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+}
+
+/* Circular Backgrounds like the reference image */
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Subtle grey circle */
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-icon svg {
+    height: 20px;
+    width: 20px;
+    fill: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect: Turns the circle Crimson */
+.social-icon:hover {
+    background-color: #DC143C;
+    transform: translateY(-3px);
+}
+
+.social-icon:hover svg {
+    fill: #ffffff;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 900px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        /* Aligns everything to the left on phones */
+        gap: 40px;
     }
 
-    .footer-tagline {
-        margin-left: 0;
-        text-align: center;
+    .footer-nav {
+        flex-wrap: wrap;
+        gap: 20px;
     }
 }
 
