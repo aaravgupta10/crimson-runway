@@ -86,42 +86,25 @@ h3,
 
 h1 {
     font-family: var(--font-display);
-    letter-spacing: -0.04em;
-    /* Tighter letter spacing = More Premium */
+    letter-spacing: -0.02em;
     color: var(--text-main);
-    text-transform: uppercase;
-    /* Gadzhi style is almost always Uppercase headers */
+    text-transform: uppercase !important;
+    /* UPPERCASE IS BACK */
 }
 
 .hero-title {
-    font-size: 4.5rem;
-    /* Make it massive */
-    line-height: 0.95;
-    /* Compress the line height */
+    font-size: 3.5rem !important;
+    /* Dropped from 4.5rem to fit the layout perfectly */
+    line-height: 1.1;
     font-weight: 800;
     margin-bottom: 24px;
 }
 
-/* REVISED GRADIENT: Mobile-Optimized Glow */
-.text-gradient,
-.hero-title span,
-.gradient-text {
-    /* Deep Crimson Gradient */
-    background: linear-gradient(to bottom, #ef4444 0%, #b91c1c 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-
-    /* PC Glow */
-    filter: drop-shadow(0px 0px 20px rgba(220, 38, 38, 0.6));
-
-    /* MOBILE GLOW FIX: Stronger, specific webkit filter */
-    -webkit-filter: drop-shadow(0px 0px 15px rgba(220, 38, 38, 0.8));
-
-    /* Ensure the element has layout properties that allow filters to render */
-    display: inline-block;
-    transform: translateZ(0);
-    /* Hardware acceleration trick for mobile */
+/* Ensure mobile size scales down properly so it doesn't break phones */
+@media (max-width: 900px) {
+    .hero-title {
+        font-size: 2.2rem !important;
+    }
 }
 
 /* --- UTILITY & ANIMATION --- */
@@ -263,24 +246,9 @@ h1 {
     overflow: hidden;
     padding-top: var(--header-height);
 
-    /* VALIDATED BACKGROUND SYNTAX */
-    background-color: #050505;
-    background-image:
-        linear-gradient(to top, #050505 10%, rgba(5, 5, 5, 0.4) 100%),
-        linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.6)),
-        /* Fixed flat rgba layer */
-        url('../images/hero-bg.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-blend-mode: multiply;
-}
-
-/* CRITICAL UX FIX: Forces Hero text to load instantly, ignoring the scroll reveal */
-.hero-section .reveal {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: none !important;
+    /* CRITICAL FIX: Makes the background transparent so the global Grid & Noise overlays show through */
+    background: transparent;
+    z-index: 1;
 }
 
 .hero-container {
@@ -288,6 +256,18 @@ h1 {
     z-index: 2;
     max-width: 800px;
     margin: 0 auto;
+}
+
+/* CRITICAL FIX: Kills the giant red puddle sitting behind the text so the mouse spotlight works again */
+.hero-glow {
+    display: none !important;
+}
+
+/* Keeps the text visible instantly */
+.hero-section .reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: none !important;
 }
 
 .hero-badge {
