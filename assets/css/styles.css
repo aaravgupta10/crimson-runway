@@ -932,14 +932,37 @@ h1 {
 @media (max-width: 900px) {
     .footer-content {
         flex-direction: column;
-        align-items: flex-start;
-        /* Aligns everything to the left on phones */
+        align-items: center;
+        /* Centers all three blocks vertically */
+        text-align: center;
+        /* Forces the text to center */
         gap: 40px;
+    }
+
+    .footer-left {
+        align-items: center;
+        /* Centers the logo and text inside its container */
+        max-width: 100%;
+    }
+
+    .footer-logo {
+        /* Resets the weird desktop margins so it can actually center */
+        margin-top: -30px;
+        margin-bottom: -15px;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .footer-nav {
         flex-wrap: wrap;
+        justify-content: center;
+        /* Centers the links horizontally */
         gap: 20px;
+    }
+
+    .footer-socials {
+        justify-content: center;
+        /* Centers the circular icons */
     }
 }
 
