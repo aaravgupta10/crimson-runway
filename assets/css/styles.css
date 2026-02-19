@@ -846,12 +846,16 @@ h1 {
 }
 
 .footer-logo {
-    height: 100px;
-    /* Kept reasonable to prevent spacing issues */
+    height: 125px;
+    /* Increased from 100px for a bit more presence */
     width: auto;
     display: block;
-    margin: -30px 0 -25px -10px;
-    /* Pulls top/bottom tight, nudges left slightly */
+    margin-top: -35px;
+    /* Pulls it up slightly to ignore top empty space */
+    margin-bottom: -10px;
+    /* Changed from -25px. This adds the exact breathing room you need before the text */
+    margin-left: -12px;
+    /* Visually aligns the 'C' in Crimson with the text below it */
 }
 
 .footer-tagline {
