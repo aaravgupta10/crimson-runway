@@ -84,7 +84,6 @@ h3,
     color: var(--text-main);
 }
 
-/* Find this in your TYPOGRAPHY section and UPDATE it */
 h1 {
     font-family: var(--font-display);
     letter-spacing: -0.04em;
@@ -94,7 +93,6 @@ h1 {
     /* Gadzhi style is almost always Uppercase headers */
 }
 
-/* Update your .hero-title specifically */
 .hero-title {
     font-size: 4.5rem;
     /* Make it massive */
@@ -104,9 +102,6 @@ h1 {
     margin-bottom: 24px;
 }
 
-/* PHASE 1 CORRECTION: 
-   Solid Premium Red. No White. No Movement. 
-*/
 /* REVISED GRADIENT: Mobile-Optimized Glow */
 .text-gradient,
 .hero-title span,
@@ -160,23 +155,21 @@ h1 {
     transition-delay: 0.3s;
 }
 
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
 /* --- HEADER --- */
 .site-header {
     position: absolute;
-    /* <--- CRITICAL CHANGE: 'absolute' makes it stay at the top */
     top: 0;
     left: 0;
     width: 100%;
     height: var(--header-height);
     z-index: 1000;
-
-    /* Always Transparent */
     background: transparent;
     border-bottom: 1px solid transparent;
 }
-
-/* IMPORTANT: I have DELETED the ".site-header.scrolled" rule here. 
-   Do not paste it back. This ensures the header never turns black. */
 
 .header-content {
     display: flex;
@@ -188,6 +181,19 @@ h1 {
 .brand-logo {
     font-weight: 700;
     font-size: 1.25rem;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.nav-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    mix-blend-mode: screen;
 }
 
 .nav-links {
@@ -294,13 +300,6 @@ h1 {
     box-shadow: 0 0 10px var(--accent-glow);
 }
 
-.hero-title {
-    font-size: 3.5rem;
-    line-height: 1.1;
-    font-weight: 800;
-    margin-bottom: 24px;
-}
-
 .hero-subtitle {
     font-size: 1.125rem;
     color: var(--text-muted);
@@ -381,114 +380,92 @@ h1 {
     color: #555;
 }
 
-/* --- BENTO GRID --- */
-.bento-section {
-    padding: 120px 0;
+/* =========================================
+   CAPABILITIES / SERVICES GRID
+   ========================================= */
+.services-section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 2;
 }
 
 .section-header {
-    margin-bottom: 60px;
     text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
 }
 
 .section-title {
     font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1.2;
+    margin-bottom: 20px;
 }
 
 .section-subtitle {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 1.1rem;
-    margin-top: 10px;
+    line-height: 1.6;
 }
 
+/* The Grid Layout */
 .bento-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-/* Glassmorphism Cards */
+/* The Individual Cards */
 .bento-card {
     background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 40px;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
-    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
+/* The Hover State - Crimson Glow */
 .bento-card:hover {
+    border-color: rgba(220, 20, 60, 0.5);
+    /* Crimson border */
+    background: rgba(220, 20, 60, 0.03);
+    /* Very subtle crimson tint */
     transform: translateY(-5px);
-    border-color: rgba(220, 38, 38, 0.5);
-    box-shadow: 0 0 30px rgba(220, 38, 38, 0.15);
-    z-index: 10;
+    /* Lift effect */
+    box-shadow: 0 10px 30px -10px rgba(220, 20, 60, 0.15);
 }
 
+/* The Icons */
+.card-icon {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25px;
+    color: #DC143C;
+    /* Your Crimson Red */
+}
+
+.card-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+/* Card Typography */
 .bento-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 16px;
+    font-family: var(--font-display);
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
     font-weight: 600;
 }
 
 .bento-card p {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.5);
     font-size: 0.95rem;
     line-height: 1.6;
-}
-
-.card-icon {
-    margin-bottom: 20px;
-    display: inline-block;
-}
-
-.card-icon svg {
-    width: 32px;
-    height: 32px;
-}
-
-.icon-bad {
-    color: #ef4444;
-    background: rgba(239, 68, 68, 0.1);
-    padding: 12px;
-    border-radius: 12px;
-    display: inline-flex;
-}
-
-.icon-good {
-    color: #22c55e;
-    background: rgba(34, 197, 94, 0.1);
-    padding: 12px;
-    border-radius: 12px;
-    display: inline-flex;
-}
-
-.problem-card {
-    grid-column: span 1;
-}
-
-.solution-card {
-    grid-column: span 1;
-}
-
-.stat-card {
-    grid-column: span 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.big-stat {
-    font-size: 4rem;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 10px;
+    margin: 0;
 }
 
 /* --- PROCESS TIMELINE --- */
@@ -832,7 +809,6 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Vertically centers the 3 columns */
     flex-wrap: wrap;
     gap: 40px;
 }
@@ -847,15 +823,11 @@ h1 {
 
 .footer-logo {
     height: 160px;
-    /* A noticeable jump in size */
     width: auto;
     display: block;
     margin-top: -50px;
-    /* Pulls it up tight against the top to compensate for the larger size */
     margin-bottom: 5px;
-    /* Positive margin to guarantee a physical gap before the text */
     margin-left: -15px;
-    /* Shifts it slightly left so the 'C' aligns perfectly with the text below */
 }
 
 .footer-tagline {
@@ -898,7 +870,6 @@ h1 {
     gap: 15px;
 }
 
-/* Circular Backgrounds like the reference image */
 .social-icon {
     display: flex;
     align-items: center;
@@ -906,7 +877,6 @@ h1 {
     width: 42px;
     height: 42px;
     background-color: rgba(255, 255, 255, 0.05);
-    /* Subtle grey circle */
     border-radius: 50%;
     transition: all 0.3s ease;
 }
@@ -918,7 +888,6 @@ h1 {
     transition: all 0.3s ease;
 }
 
-/* Hover Effect: Turns the circle Crimson */
 .social-icon:hover {
     background-color: #DC143C;
     transform: translateY(-3px);
@@ -926,44 +895,6 @@ h1 {
 
 .social-icon:hover svg {
     fill: #ffffff;
-}
-
-/* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 900px) {
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        /* Centers all three blocks vertically */
-        text-align: center;
-        /* Forces the text to center */
-        gap: 40px;
-    }
-
-    .footer-left {
-        align-items: center;
-        /* Centers the logo and text inside its container */
-        max-width: 100%;
-    }
-
-    .footer-logo {
-        /* Resets the weird desktop margins so it can actually center */
-        margin-top: -30px;
-        margin-bottom: -15px;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .footer-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        /* Centers the links horizontally */
-        gap: 20px;
-    }
-
-    .footer-socials {
-        justify-content: center;
-        /* Centers the circular icons */
-    }
 }
 
 /* --- MOBILE NAVIGATION SYSTEM --- */
@@ -1075,7 +1006,31 @@ h1 {
 
     .footer-content {
         flex-direction: column;
+        align-items: center;
+        text-align: center;
         gap: 40px;
+    }
+
+    .footer-left {
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .footer-logo {
+        margin-top: -30px;
+        margin-bottom: -15px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .footer-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .footer-socials {
+        justify-content: center;
     }
 
     .process-step {
@@ -1097,14 +1052,10 @@ h1 {
         margin-top: 0;
     }
 
-    /* Inside @media (max-width: 900px) */
     .marquee-container {
         width: 100vw;
-        /* Use viewport width instead of % to prevent overflow */
         margin-left: -20px;
-        /* Offset the container padding */
         transform: rotate(-1deg) scale(1.1);
-        /* Scale it up slightly to hide edges */
     }
 
     .work-grid {
@@ -1128,15 +1079,10 @@ h1 {
     height: 100%;
     pointer-events: none;
     z-index: 0;
-    /* Behind everything */
-
-    /* Creates a 100px x 100px delicate grid pattern */
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 100px 100px;
-
-    /* Fades the grid out at the bottom so it doesn't look like graph paper */
     mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
 }
@@ -1147,20 +1093,12 @@ h1 {
     top: 0;
     left: 0;
     width: 800px;
-    /* Massive ambient glow */
     height: 800px;
-
-    /* The light is your brand color, but very faint */
     background: radial-gradient(circle, rgba(220, 38, 38, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
-
     transform: translate(-50%, -50%);
-    /* Centers div on cursor */
     pointer-events: none;
-    /* Lets you click through it */
     z-index: 9999;
-    /* Sits on TOP of everything to light it up */
     mix-blend-mode: screen;
-    /* Blends luxuriously with text */
     transition: opacity 0.5s ease;
 }
 
@@ -1172,31 +1110,23 @@ h1 {
     width: 100%;
     height: 100%;
     background: #000;
-    /* Pure black curtain */
     z-index: 99999;
-    /* Sits on top of EVERYTHING */
     display: flex;
     justify-content: flex-end;
-    /* Puts number in bottom right like a technical readout */
     align-items: flex-end;
     padding: 60px;
     transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
-    /* "Curtain Up" animation */
 }
 
-/* The "Curtain Up" Class */
 .preloader.hide {
     transform: translateY(-100%);
-    /* Slides up smoothly */
 }
 
 .counter {
     font-family: var(--font-display);
     font-size: 10rem;
-    /* Massive typography */
     font-weight: 800;
     color: var(--accent-glow);
-    /* Your crimson red */
     line-height: 1;
     opacity: 0;
     animation: fadeIn 0.5s forwards;
@@ -1208,7 +1138,6 @@ h1 {
     }
 }
 
-/* Mobile Adjustment */
 @media (max-width: 900px) {
     .counter {
         font-size: 5rem;
@@ -1219,13 +1148,13 @@ h1 {
     }
 }
 
+/* --- SCROLL SYSTEM (LENIS) --- */
 html.lenis {
     height: auto;
 }
 
 .lenis.lenis-smooth {
     scroll-behavior: auto;
-    /* IMPORTANT: Disables native smooth scroll to let Lenis take over */
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
@@ -1238,24 +1167,4 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
     pointer-events: none;
-}
-
-/* Update the Logo Container */
-.logo a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-/* Control the Image Size */
-.nav-logo-img {
-    height: 40px;
-    /* Adjust this to fit your navbar height */
-    width: auto;
-    /* Maintains aspect ratio */
-    object-fit: contain;
-
-    /* OPTIONAL: If your logo is a JPG with a black background, 
-       this removes the black box (only works on dark backgrounds) */
-    mix-blend-mode: screen;
 }
