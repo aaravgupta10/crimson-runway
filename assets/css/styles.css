@@ -89,12 +89,10 @@ h1 {
     letter-spacing: -0.02em;
     color: var(--text-main);
     text-transform: uppercase !important;
-    /* UPPERCASE IS BACK */
 }
 
 .hero-title {
     font-size: 3.5rem !important;
-    /* Dropped from 4.5rem to fit the layout perfectly */
     line-height: 1.1;
     font-weight: 800;
     margin-bottom: 24px;
@@ -265,8 +263,6 @@ h1 {
     text-align: center;
     overflow: hidden;
     padding-top: var(--header-height);
-
-    /* CRITICAL FIX: Makes the background transparent so the global Grid & Noise overlays show through */
     background: transparent;
     z-index: 1;
 }
@@ -277,11 +273,6 @@ h1 {
     max-width: 800px;
     margin: 0 auto;
 }
-
-/* CRITICAL FIX: Kills the giant red puddle sitting behind the text so the mouse spotlight works again */
-/*.hero-glow {
-    display: none !important;
-}*/
 
 /* Keeps the text visible instantly */
 .hero-section .reveal {
@@ -335,34 +326,6 @@ h1 {
     letter-spacing: 0.1em;
 }
 
-/* Pulsing Background Glow */
-.hero-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(220, 38, 38, 0.4) 0%, rgba(5, 5, 5, 0) 70%);
-    z-index: 1;
-    pointer-events: none;
-    filter: blur(60px);
-    opacity: 0.6;
-    animation: pulse-glow 4s ease-in-out infinite alternate;
-}
-
-@keyframes pulse-glow {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: translate(-50%, -50%) scale(1.1);
-        opacity: 0.7;
-    }
-}
-
 /* --- TRUST LOGOS --- */
 .trust-section {
     padding: 40px 0;
@@ -376,20 +339,6 @@ h1 {
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-}
-
-.logo-grid {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
-    opacity: 0.5;
-}
-
-.client-logo {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #555;
 }
 
 /* =========================================
@@ -441,11 +390,8 @@ h1 {
 /* The Hover State - Crimson Glow */
 .bento-card:hover {
     border-color: rgba(220, 20, 60, 0.5);
-    /* Crimson border */
     background: rgba(220, 20, 60, 0.03);
-    /* Very subtle crimson tint */
     transform: translateY(-5px);
-    /* Lift effect */
     box-shadow: 0 10px 30px -10px rgba(220, 20, 60, 0.15);
 }
 
@@ -455,7 +401,6 @@ h1 {
     height: 45px;
     margin-bottom: 25px;
     color: #DC143C;
-    /* Your Crimson Red */
 }
 
 .card-icon svg {
@@ -614,25 +559,6 @@ h1 {
     padding-left: 40px;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .comparison-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .stat-banner {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-
-    .stat-text {
-        border-left: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-left: 0;
-        padding-top: 20px;
-    }
-}
 
 /* --- PROCESS TIMELINE --- */
 .process-section {
@@ -1111,8 +1037,23 @@ h1 {
 
 /* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 900px) {
-    .bento-grid {
+
+    .bento-grid,
+    .comparison-grid {
         grid-template-columns: 1fr;
+    }
+
+    .stat-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .stat-text {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-left: 0;
+        padding-top: 20px;
     }
 
     .hero-title {
