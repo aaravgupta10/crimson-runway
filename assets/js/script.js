@@ -235,29 +235,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     /* -----------------------------------------------------------
-       9. FAQ ACCORDION LOGIC
+       9. FAQ LOGIC (Pure CSS Trigger)
        ----------------------------------------------------------- */
-    const faqItems = document.querySelectorAll('.faq-item');
+    const faqRows = document.querySelectorAll('.faq-row');
 
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
+    faqRows.forEach(row => {
+        const trigger = row.querySelector('.faq-trigger');
 
-        question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
+        if (trigger) {
+            trigger.addEventListener('click', () => {
+                // Check if this one is already open
+                const isActive = row.classList.contains('active');
 
-            // Close all other FAQs first (optional, makes it cleaner)
-            faqItems.forEach(otherItem => {
-                otherItem.classList.remove('active');
-                otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                // Close all rows first (keeps it clean)
+                faqRows.forEach(r => r.classList.remove('active'));
+
+                // If it wasn't open, open it
+                if (!isActive) {
+                    row.classList.add('active');
+                }
             });
-
-            // If it wasn't active, open it
-            if (!isActive) {
-                item.classList.add('active');
-                // Calculate the exact height of the text to slide it open smoothly
-                answer.style.maxHeight = answer.scrollHeight + "px";
-            }
-        });
+        }
     });
 });
