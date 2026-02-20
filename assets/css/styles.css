@@ -480,6 +480,160 @@ h1 {
     margin: 0;
 }
 
+/* =========================================
+   WHY US / COMPARISON SECTION
+   ========================================= */
+.comparison-section {
+    padding: 120px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto 40px auto;
+}
+
+.comparison-card {
+    padding: 50px 40px;
+    border-radius: 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stark Typography Labels */
+.card-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* The "Dead" Left Side */
+.card-dark {
+    background: rgba(25, 25, 25, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.card-dark .card-label {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.card-dark h3 {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* The "Premium" Right Side */
+.card-glow {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    box-shadow: 0 10px 40px -10px rgba(220, 20, 60, 0.1);
+}
+
+.card-glow h3 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* Minimalist Bullet Points */
+.flaw-list,
+.pro-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.flaw-list li,
+.pro-list li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 20px;
+}
+
+.flaw-list li {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.pro-list li {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.flaw-list li::before {
+    content: '×';
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+}
+
+.pro-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #DC143C;
+    font-weight: bold;
+}
+
+/* The Premium Stat Banner */
+.stat-banner {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.stat-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 40px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .stat-text {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-left: 0;
+        padding-top: 20px;
+    }
+}
+
 /* --- PROCESS TIMELINE --- */
 .process-section {
     padding: 100px 0;
