@@ -122,7 +122,7 @@ h1 {
     -webkit-filter: drop-shadow(0px 0px 30px rgba(220, 20, 60, 0.5)) !important;
 
     /* Forces desktop to turn off the text-shadow so it doesn't double-glow */
-    text-shadow: 0px 0px 10px rgba(220, 38, 38, 0.5) !important;
+    /*text-shadow: 0px 0px 10px rgba(220, 38, 38, 0.5) !important;*/
 
     display: inline-block;
     transform: translateZ(0);
