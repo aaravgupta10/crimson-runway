@@ -801,7 +801,7 @@ h1 {
 }
 
 /* =========================================
-   FAQ SECTION (The Accordion)
+   FAQ SECTION (Sleek Minimalist List)
    ========================================= */
 .faq-section {
     padding: 100px 0;
@@ -809,123 +809,98 @@ h1 {
     z-index: 2;
 }
 
-.faq-container {
+.faq-wrapper {
     max-width: 800px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.faq-item {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.4s ease;
+.faq-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.faq-item:hover {
-    border-color: rgba(220, 20, 60, 0.3);
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.faq-item.active {
-    border-color: rgba(220, 20, 60, 0.5);
-    box-shadow: 0 10px 30px -10px rgba(220, 20, 60, 0.15);
-}
-
-.faq-question {
+.faq-trigger {
     width: 100%;
-    text-align: left;
-    background: transparent;
-    border: none;
-    padding: 24px 30px;
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-main);
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: color 0.3s ease;
-}
-
-.faq-item.active .faq-question {
-    color: #DC143C;
-    /* Crimson text when active */
-}
-
-/* The Plus/Minus Icon */
-.faq-icon {
-    width: 20px;
-    height: 20px;
-    position: relative;
-    flex-shrink: 0;
-    margin-left: 20px;
-}
-
-.faq-icon::before,
-.faq-icon::after {
-    content: '';
-    position: absolute;
-    background-color: var(--text-muted);
+    padding: 30px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
     transition: all 0.3s ease;
 }
 
-/* Horizontal line */
-.faq-icon::before {
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    transform: translateY(-50%);
+.faq-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: color 0.3s ease;
 }
 
-/* Vertical line */
-.faq-icon::after {
-    top: 0;
-    left: 50%;
-    width: 2px;
-    height: 100%;
-    transform: translateX(-50%);
-}
-
-.faq-item.active .faq-icon::before,
-.faq-item.active .faq-icon::after {
-    background-color: #DC143C;
-}
-
-/* Rotate to make a minus sign when active */
-.faq-item.active .faq-icon::after {
-    transform: translateX(-50%) rotate(90deg);
-    opacity: 0;
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1);
-}
-
-.faq-answer p {
-    padding: 0 30px 30px 30px;
+.faq-arrow {
     color: var(--text-muted);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), color 0.3s ease;
+}
+
+/* Hover States */
+.faq-trigger:hover .faq-title {
+    color: #DC143C;
+}
+
+.faq-trigger:hover .faq-arrow {
+    color: var(--text-main);
+}
+
+/* Active/Open States */
+.faq-row.active .faq-title {
+    color: #DC143C;
+}
+
+.faq-row.active .faq-arrow {
+    transform: rotate(180deg);
+    color: #DC143C;
+}
+
+/* CSS Grid Animation (Butter Smooth) */
+.faq-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.faq-row.active .faq-panel {
+    grid-template-rows: 1fr;
+}
+
+.faq-content {
+    overflow: hidden;
+}
+
+.faq-content p {
+    padding-bottom: 30px;
+    color: rgba(255, 255, 255, 0.5);
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
+    padding-right: 40px;
 }
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
-    .faq-question {
-        padding: 20px;
-        font-size: 1rem;
+    .faq-title {
+        font-size: 1.05rem;
     }
 
-    .faq-answer p {
-        padding: 0 20px 20px 20px;
+    .faq-trigger {
+        padding: 20px 0;
+    }
+
+    .faq-content p {
+        padding-bottom: 20px;
+        padding-right: 20px;
     }
 }
 
