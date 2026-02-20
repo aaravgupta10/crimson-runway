@@ -1294,3 +1294,29 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
     pointer-events: none;
 }
+
+/* =========================================
+   CRITICAL MOBILE GLOW OVERRIDE (WebKit Bug Fix)
+   ========================================= */
+@media (max-width: 900px) {
+
+    .text-gradient,
+    .hero-title span,
+    .gradient-text {
+        /* Kill the gradient that breaks mobile rendering */
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+
+        /* Apply solid Premium Crimson */
+        color: #ef4444 !important;
+
+        /* Force a massive double-layered glow that mobile browsers cannot ignore */
+        text-shadow: 0px 0px 15px rgba(220, 38, 38, 0.8),
+            0px 0px 30px rgba(220, 38, 38, 0.5) !important;
+
+        /* Strip the broken filters */
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+}
