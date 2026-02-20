@@ -117,9 +117,12 @@ h1 {
     /* Kills white override so the gradient shows */
     color: transparent !important;
 
-    /* The Signature Red Glow */
+    /* The Signature Red Glow (Desktop) */
     filter: drop-shadow(0px 0px 15px rgba(220, 38, 38, 0.6)) !important;
     -webkit-filter: drop-shadow(0px 0px 15px rgba(220, 38, 38, 0.6)) !important;
+
+    /* MOBILE FIX: Hardcoded text-shadow fallback for iOS/Android engines */
+    text-shadow: 0px 0px 20px rgba(220, 38, 38, 0.5) !important;
 
     display: inline-block;
     transform: translateZ(0);
