@@ -1293,3 +1293,28 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
     pointer-events: none;
 }
+
+/* =========================================
+   CRITICAL MOBILE GLOW OVERRIDE (WebKit Bug Fix)
+   ========================================= */
+@media (max-width: 900px) {
+
+    .text-gradient,
+    .hero-title span,
+    .gradient-text {
+        /* Kill the gradient that breaks mobile rendering */
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+
+        /* Apply solid Premium Crimson */
+        color: #ef4444 !important;
+
+        /* Stronger single text-shadow */
+        text-shadow: 0px 0px 14px rgba(220, 20, 60, 0.6) !important;
+
+        /* Strip the broken filters */
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+}
