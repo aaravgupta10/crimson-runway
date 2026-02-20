@@ -259,9 +259,9 @@ h1 {
 }
 
 /* CRITICAL FIX: Kills the giant red puddle sitting behind the text so the mouse spotlight works again */
-.hero-glow {
+/*.hero-glow {
     display: none !important;
-}
+}*/
 
 /* Keeps the text visible instantly */
 .hero-section .reveal {
