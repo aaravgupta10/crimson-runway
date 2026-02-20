@@ -733,9 +733,12 @@ h1 {
     font-family: var(--font-display);
     font-size: 4.5rem;
     font-weight: 800;
-    min-width: 180px;
+    min-width: 200px;
+    /* Bumped up slightly to give it breathing room */
     text-align: right;
     line-height: 1;
+    padding-right: 10px;
+    /* CRITICAL FIX: Forces the gradient wide enough so the % doesn't clip */
 }
 
 .deployment-details {
