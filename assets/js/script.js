@@ -235,26 +235,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     /* -----------------------------------------------------------
-       9. FAQ LOGIC (Pure CSS Trigger)
+       9. FAQ LOGIC (Dead Simple Toggle)
        ----------------------------------------------------------- */
-    const faqRows = document.querySelectorAll('.faq-row');
-
-    faqRows.forEach(row => {
-        const trigger = row.querySelector('.faq-trigger');
-
-        if (trigger) {
-            trigger.addEventListener('click', () => {
-                // Check if this one is already open
-                const isActive = row.classList.contains('active');
-
-                // Close all rows first (keeps it clean)
-                faqRows.forEach(r => r.classList.remove('active'));
-
-                // If it wasn't open, open it
-                if (!isActive) {
-                    row.classList.add('active');
-                }
-            });
-        }
+    document.querySelectorAll('.faq-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.closest('.faq-row').classList.toggle('active');
+        });
     });
 });
