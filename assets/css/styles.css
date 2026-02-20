@@ -107,6 +107,27 @@ h1 {
     }
 }
 
+/* --- GLOBAL GRADIENT & GLOW --- */
+.text-gradient,
+.hero-title span,
+.gradient-text {
+    /* Deep Crimson Gradient */
+    background: linear-gradient(to bottom, #ef4444 0%, #b91c1c 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+
+    /* Kills white override so the gradient shows */
+    color: transparent !important;
+
+    /* The Signature Red Glow */
+    filter: drop-shadow(0px 0px 15px rgba(220, 38, 38, 0.6)) !important;
+    -webkit-filter: drop-shadow(0px 0px 15px rgba(220, 38, 38, 0.6)) !important;
+
+    display: inline-block;
+    transform: translateZ(0);
+    /* Hardware acceleration for mobile */
+}
+
 /* --- UTILITY & ANIMATION --- */
 .container {
     max-width: var(--container-width);
@@ -233,7 +254,6 @@ h1 {
     color: var(--text-main);
 }
 
-/* --- HERO SECTION --- */
 /* --- HERO SECTION --- */
 .hero-section {
     position: relative;
