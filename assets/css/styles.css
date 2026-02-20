@@ -118,8 +118,8 @@ h1 {
     color: transparent !important;
 
     /* The Signature Red Glow - Dialed up a tad */
-    filter: drop-shadow(0px 0px 16px rgba(220, 20, 60, 0.5)) !important;
-    -webkit-filter: drop-shadow(0px 0px 16px rgba(220, 20, 60, 0.5)) !important;
+    filter: drop-shadow(0px 0px 30px rgba(220, 20, 60, 0.5)) !important;
+    -webkit-filter: drop-shadow(0px 0px 30px rgba(220, 20, 60, 0.5)) !important;
 
     /* Forces desktop to turn off the text-shadow so it doesn't double-glow */
     text-shadow: none !important;
